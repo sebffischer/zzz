@@ -10,25 +10,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - id: setup-r
+      - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
       - name: Restore renv environment
         run: |
           R -q -e 'options(Ncpus = 2); install.packages("renv", repos = "cloud.r-project.org"); renv::restore()'
 
-      - id: Leanification does not work
+      - name: Leanification does not work
         run: |
           library(mlr3)
           unclass(lrn("regr.rpart")$train)
         shell: Rscript {0}
 
-      - id: install mlr3 the "normal" way
+      - name: install mlr3 the "normal" way
         run: |
           install.packages("mlr3")
         shell: Rscript {0}
 
-      - id: Leanification does work
+      - name: Leanification does work
         run: |
           library(mlr3)
           unclass(lrn("regr.rpart")$train)
