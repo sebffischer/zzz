@@ -19,7 +19,7 @@ jobs:
 
       - name: Leanification is not applied
         run: |
-          libary(mlr3)
+          library(mlr3)
           lrn("classif.rpart")$train
         shell: Rscript {0}
 
