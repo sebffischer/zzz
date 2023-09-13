@@ -15,7 +15,10 @@ jobs:
 
       - name: Restore renv environment
         run: |
-          R -q -e 'options(Ncpus = 2); install.packages("devtools"); devtools::install_version("renv", version = "1.0.0"); renv::restore()'
+          install.packages("https://cran.r-project.org/src/contrib/Archive/renv/renv_1.0.0.tar.gz", repos = NULL, type = "source")
+          renv::restore()
+        shell:
+          Rscript {0}
 
       - name: Leanification is not applied
         run: |
