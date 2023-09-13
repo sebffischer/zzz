@@ -17,10 +17,19 @@ jobs:
         run: |
           R -q -e 'options(Ncpus = 2); install.packages("renv", repos = "cloud.r-project.org"); renv::restore()'
 
-      - id: check-leanification
+      - id: Leanification does not work
         run: |
           library(mlr3)
           unclass(lrn("regr.rpart")$train)
         shell: Rscript {0}
 
+      - id: install mlr3 the "normal" way
+        run: |
+          install.packages("mlr3")
+        shell: Rscript {0}
 
+      - id: Leanification does work
+        run: |
+          library(mlr3)
+          unclass(lrn("regr.rpart")$train)
+        shell: Rscript {0}
