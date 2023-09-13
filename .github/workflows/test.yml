@@ -14,13 +14,13 @@ jobs:
       - id: setup-mlr3
         run: |
           install.packages("mlr3")
-        shell: Rscript{0}
+        shell: Rscript {0}
 
       - id: check-leanification
         run: |
           library(mlr3)
           lrn("regr.rpart")$train
-        shell: Rscript{0}
+        shell: Rscript {0}
 
 
 
