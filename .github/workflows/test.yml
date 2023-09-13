@@ -19,9 +19,8 @@ jobs:
 
       - id: check-leanification
         run: |
-          list.files()
-          #library(mlr3)
-          #lrn("regr.rpart")$train
+          library(mlr3)
+          lrn("regr.rpart")$train
         shell: Rscript {0}
 
 
